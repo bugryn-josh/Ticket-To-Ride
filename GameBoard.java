@@ -32,7 +32,6 @@ public class GameBoard extends JFrame {
       // Width and Height of GameBoard window
       setSize(870, 638);
         
-        
       try {
          bgImage = ImageIO.read(getClass().getResource("map.png"));
         
@@ -74,10 +73,10 @@ public class GameBoard extends JFrame {
         
    }
    
-   /*
-     CButton - A custom button that accepts a shape and creates a JButton
-                 of the given shape.
-   */
+   /**
+    * CButton Class - A custom button that accepts a
+    * shape and creates a JButton of the given shape.
+    */
    public class CButton extends JButton {
      // Shape object the button will use
       private Shape shape = null;
@@ -94,13 +93,13 @@ public class GameBoard extends JFrame {
    
       
       
-      /*
-         CButton constructor
-         
-         @param button - A shape object to draw the button
-         @param name - A string to assign a name to the button
-         @param trainColor - The color the button will be filled
-      */
+      /**
+       * CButton constructor.
+       * 
+       * @param button - A shape object to draw the button
+       * @param name - A string to assign a name to the button
+       * @param trainColor - The color the button will be filled
+       */
       public CButton(Shape button, String name, Color trainColor) {
          this.shape = button;
          this.area = new Area(shape);
@@ -206,10 +205,10 @@ public class GameBoard extends JFrame {
    } // end CButton class
   
   
-  /*
-     BGPanel - a custom JPanel that contains a BackGround image
-     @param bgImage - A BufferedImage to draw as the BackGround
-  */ 
+  /**
+   * BGPanel - a custom JPanel that contains a BackGround image
+   * @param bgImage - A BufferedImage to draw as the BackGround
+   */ 
    public class BGPanel extends JPanel {
       private BufferedImage bgImage = null;
       
