@@ -7,9 +7,12 @@ import java.awt.image.BufferedImage;
 import javax.imageio.ImageIO;
 import java.io.*;
 
+/**
+ * GameBoard Class.
+ * @author Joshua Bugryn
+ * @version 4/6/2019
+ */
 public class GameBoard extends JFrame {
-     // BufferedImage to contain the BackGround image
-   private BufferedImage bgImage = null;
 
      // Object file holding the Vector<Shape> of shapes for each button
    private File buttonFile = new File("buttonlist.dat");
@@ -17,19 +20,14 @@ public class GameBoard extends JFrame {
      // Vector<Shape> to hold input from buttonlist.dat
    private Vector<Shape> buttonList = null;
      
-     // Create a BackGround JPanel 
-   private BGPanel jp = null;
-     
      // Array of colors for each group of button
    private Color[] colors = {Color.BLACK, Color.WHITE, Color.GRAY, Color.YELLOW, Color.GREEN, Color.ORANGE, Color.MAGENTA, Color.RED, Color.BLUE, new Color(230, 26, 40)};
         
      // Array of ints to control color changing in loop
    private int[] loop = {6, 19, 50, 57, 64, 71, 78, 85, 92, 128};
-        
-     // Color value for painting the button
-   private Color trainColor = null;
       
    public GameBoard() {
+      BufferedImage bgImage = null;
      
       // Width and Height of GameBoard window
       setSize(870, 638);
@@ -52,7 +50,7 @@ public class GameBoard extends JFrame {
       }
       
       // Create the BackgroundPanel and read in Background image, and button list Vector
-      jp = new BGPanel(bgImage);
+      BGPanel gamePanel = new BGPanel(bgImage);
       
       
       // Loop to create and add each Custom Button (CButton)
@@ -60,14 +58,14 @@ public class GameBoard extends JFrame {
       int j = 0;
       for(Shape s : buttonList) {
          String name = new String("" + i);
-         jp.add(new CButton(s, name, colors[j]));
+         gamePanel.add(new CButton(s, name, colors[j]));
          i++;
          if(i == loop[j] && j < 9) {
             j++;
          }
       }
       
-      add(jp);
+      add(gamePanel);
       
       setVisible(true);
       repaint();
@@ -134,7 +132,7 @@ public class GameBoard extends JFrame {
                public void mouseClicked(MouseEvent e) {
                   //JOptionPane.showMessageDialog(null, "Click Event", "Clicked", JOptionPane.INFORMATION_MESSAGE);
                   System.out.println(name + " clicked");
-                  if(selected == false) {
+                  if(!selected) {
                      selected = true;
                   } else {
                      selected = false;
@@ -178,7 +176,7 @@ public class GameBoard extends JFrame {
          
          // if block to check if mouse has entered the button
          // changes outline color to highlight button if true
-         if(entered == true) {
+         if(entered) {
             g2d.setPaint(Color.YELLOW.brighter());
          } else {
             if(trainColor != Color.BLACK) {
@@ -195,7 +193,7 @@ public class GameBoard extends JFrame {
          // changes fill color to highlight button selection or deselection
          // @param trainColor - Default color of the train route
          
-         if(selected == true) {
+         if(selected) {
             g2d.setPaint(new Color(0, 255, 255));
          } else {
             g2d.setPaint(trainColor);
@@ -213,7 +211,7 @@ public class GameBoard extends JFrame {
      @param bgImage - A BufferedImage to draw as the BackGround
   */ 
    public class BGPanel extends JPanel {
-      BufferedImage bgImage = null;
+      private BufferedImage bgImage = null;
       
       /*
         BGPanel Constructor
