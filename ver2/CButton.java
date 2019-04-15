@@ -15,7 +15,7 @@ public class CButton extends JButton {
    private Shape shape = null;
   // Area object for hit detection
    private Area area = null;
-  // name of the button
+   // name of the button
    private String nameButton = "color_#";
   // Color object to hold button fill color
    private Color trainColor;
@@ -135,4 +135,13 @@ public class CButton extends JButton {
       g2d.fill(area);
       
    } // end paintComponent @Override
+   
+   /**
+    * getButtonID - returns button ID name 
+    *
+    * @return nameButton - String of button ID
+    */
+   public String getButtonID() {
+      return nameButton;
+   }
 } // end CButton class
