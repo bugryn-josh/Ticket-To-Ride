@@ -16,7 +16,7 @@ public class CButton extends JButton {
   // Area object for hit detection
    private Area area = null;
   // name of the button
-   private String nameButton;
+   private String nameButton = "color_#";
   // Color object to hold button fill color
    private Color trainColor;
   // boolean to track mouse entry and exit
@@ -62,7 +62,7 @@ public class CButton extends JButton {
                   repaint();
                }
                public void mouseClicked(MouseEvent e) {
-               //JOptionPane.showMessageDialog(null, "Click Event", "Clicked", JOptionPane.INFORMATION_MESSAGE);
+                  JOptionPane.showMessageDialog(null, nameButton, "Clicked", JOptionPane.INFORMATION_MESSAGE);
                   //System.out.println(name + " clicked");
                   if(!selected) {
                      selected = true;
