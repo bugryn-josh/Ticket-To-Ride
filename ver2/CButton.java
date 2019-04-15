@@ -16,7 +16,7 @@ public class CButton extends JButton {
   // Area object for hit detection
    private Area area = null;
   // name of the button
-   private String name = "";
+   private String nameButton;
   // Color object to hold button fill color
    private Color trainColor;
   // boolean to track mouse entry and exit
@@ -33,10 +33,10 @@ public class CButton extends JButton {
       @param name - A string to assign a name to the button
       @param trainColor - The color the button will be filled
    */
-   public CButton(Shape button, String name, Color trainColor) {
+   public CButton(Shape button, String nameButton, Color trainColor) {
       this.shape = button;
       this.area = new Area(shape);
-      this.name = name;
+      this.nameButton = nameButton;
       this.trainColor = trainColor;
       
       // remove JButton default styling
@@ -64,7 +64,7 @@ public class CButton extends JButton {
                public void mouseClicked(MouseEvent e) {
                //JOptionPane.showMessageDialog(null, "Click Event", "Clicked", JOptionPane.INFORMATION_MESSAGE);
                   //System.out.println(name + " clicked");
-                  if(selected == false) {
+                  if(!selected) {
                      selected = true;
                   } else {
                      selected = false;
@@ -108,7 +108,7 @@ public class CButton extends JButton {
       
       // if block to check if mouse has entered the button
       // changes outline color to highlight button if true
-      if(entered == true) {
+      if(entered) {
          g2d.setPaint(Color.YELLOW.brighter());
       } else {
          if(trainColor != Color.BLACK) {
@@ -125,7 +125,7 @@ public class CButton extends JButton {
       // changes fill color to highlight button selection or deselection
       // @param trainColor - Default color of the train route
       
-      if(selected == true) {
+      if(selected) {
          g2d.setPaint(new Color(0, 255, 255));
       } else {
          g2d.setPaint(trainColor);

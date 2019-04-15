@@ -13,19 +13,15 @@ import java.io.*;
  * @version 4/15/2019
  */
 public class GameBoard extends JPanel {
-     // relative path to the background image
-   private String bgPath = "";
-     // BufferedImage to be loaded as background
-   private BufferedImage bgImage = null;
-     
-     // Vector<Shape> to hold input from buttonlist.dat
-   private Vector<Shape> buttonList = null;
+
+    // Image to paint as background of pan
+   private BufferedImage bgImage = null;  
      
      // Array of colors for each group of button
    private Color[] colors = {Color.BLACK, Color.WHITE, Color.GRAY, Color.YELLOW, Color.GREEN, Color.ORANGE, Color.MAGENTA, Color.RED, Color.BLUE, new Color(230, 26, 40)};
    private String[] prefix = {"black_", "white_", "gray_", "yellow_", "green_", "orange_", "purple_", "red_", "blue_", "city_"};    
      // Array of ints to control color changing in loop
-   private int[] loop = {7, 14, 58, 65, 72, 79, 86, 93, 100,136};
+   private int[] loop = {7, 14, 58, 65, 72, 79, 86, 93, 100, 136};
     
     /**
      * GameBoard constructor - accepts a background image, creates,
@@ -33,13 +29,16 @@ public class GameBoard extends JPanel {
      *
      * @param bgPath - relative path to the background image file
      */  
-   public GameBoard(String bgPath) {
-      this.bgPath = bgPath;
+   public GameBoard() {
+      
+      // Vector<Shape> to hold input from buttonlist.dat
+      Vector<Shape> buttonList = null;
+   
       setLayout(null);
       
       // Tries to load provided background image and button list vector object
       try {
-         bgImage = ImageIO.read(getClass().getResource(bgPath));
+         this.bgImage = ImageIO.read(getClass().getResource("resources/map.png"));
         
          ObjectInputStream ois = new ObjectInputStream(getClass().getResourceAsStream("resources/buttonlist.dat"));
          buttonList = (Vector<Shape>)ois.readObject();
