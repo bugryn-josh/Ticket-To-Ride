@@ -11,11 +11,11 @@ import java.io.*;
 public class DestinationCardCheck {
   
    // Destination card object to check
-   private DestinationCard destCard = null;
+   private DestinationCard destCard;
    // First city on destination card
-   private String startingCity = "";
+   private String startingCity;
    // Second city on destination card
-   private String endingCity = "";
+   private String endingCity;
    // boolean to check if second city is ever reached
    private boolean destTwoVisited;
   
@@ -42,11 +42,11 @@ public class DestinationCardCheck {
          System.err.println("Cannot find MAP_HASHED.obj");
       }
    
-      // this.destCard = destCard;
-      // this.ownedRoutes = ownedRoutes;
-      // this.destTwoVisited = false;
-      // this.startingCity = destCard.getLocationOne();
-      // this.endingCity = destCard.getLocationTwo();
+      this.destCard = null;
+      this.ownedRoutes = null;
+      this.destTwoVisited = false;
+      this.startingCity = "";
+      this.endingCity = "";
    }
    
    /**
@@ -58,9 +58,9 @@ public class DestinationCardCheck {
    public void newCard(DestinationCard destCard, ArrayList<String> ownedRoutes) {
       this.destCard = destCard;
       this.ownedRoutes = ownedRoutes;
-      destTwoVisited = false;
-      startingCity = destCard.getLocationOne();
-      endingCity = destCard.getLocationTwo();
+      this.destTwoVisited = false;
+      this.startingCity = destCard.getLocationOne();
+      this.endingCity = destCard.getLocationTwo();
    }
    
    
